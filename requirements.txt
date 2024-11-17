@@ -1,0 +1,5 @@
+deep_translator==1.11.4
+langid==1.1.6
+PyQt6==6.7.1
+PyQt6_sip==13.8.0
+Requests==2.32.3
