@@ -1,3 +1,5 @@
+# Для того, чтобы понять, как созтавлять запросы для этого api
+# Смотрите https://www.omdbapi.com/ , смотрите Usage, Parameters и Examples 
 import requests
 from deep_translator import GoogleTranslator
 import langid
@@ -9,7 +11,7 @@ def auto_translate_resp(resp):
     if langid.classify(resp)[0] != "en":
         try:
             translated_text = translator_en.translate(resp)
-            resp = translated_text
+            return translated_text
         except Exception as e:
             print(f"Translation error: {e}")
     return resp
@@ -17,13 +19,13 @@ def auto_translate_resp(resp):
 api_key = "API KEY"
 resp = input("Введите название фильма: ")
 resp = auto_translate_resp(resp)
-print(resp)
+print(f"Translated film - {resp}")
 url = f'http://www.omdbapi.com/?s={resp}&apikey={api_key}'
 
 response = requests.get(url)
 data = response.json()
 
-# Получить список всех фильмов
+# Вывести список всех фильмов
 movies = data['Search']
 print(movies)
 
@@ -65,7 +67,7 @@ def search_movie_by_id(movie_id):
         movie_info_text += f"Описание на русском: {translator_ru.translate(movie['Plot'])}\n"
         movie_info_text += f"Постер: {movie['Poster']}"
 
-        print(movie_info_text)
+        return movie_info_text
     else:
         print("Фильм не найден")
 
@@ -75,4 +77,4 @@ for i in range(len(movies)):
     print_movie_details(movies, i)
 
 movie_id = input("Введите ID фильма: ")
-search_movie_by_id(movie_id)
+print(search_movie_by_id(movie_id))
