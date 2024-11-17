@@ -17,7 +17,6 @@ def auto_translate_resp(resp):
 resp = input("Введите название фильма: ")
 resp = auto_translate_resp(resp)
 print(resp)
-api_key = 'd58c5311'
 url = f'http://www.omdbapi.com/?s={resp}&apikey={api_key}'
 
 response = requests.get(url)
