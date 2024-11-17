@@ -311,7 +311,7 @@ class MovieSearchApp(QWidget):
 
 
 if __name__ == "__main__":
-    API_KEY = 'd58c5311'
+    API_KEY = "API KEY"
     app = QApplication(sys.argv)
     window = MovieSearchApp()
     window.show()
