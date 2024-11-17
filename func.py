@@ -14,6 +14,7 @@ def auto_translate_resp(resp):
             print(f"Translation error: {e}")
     return resp
 
+api_key = "API KEY"
 resp = input("Введите название фильма: ")
 resp = auto_translate_resp(resp)
 print(resp)
